@@ -1,0 +1,104 @@
+<html ng-app="ui.bootstrap.demo">
+  <head>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-module-sanitize/angular-sanitize.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script 
+    <script src="script.js"></script>
+    
+    <style >
+       
+
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 20px 0;
+            
+            border: 3px solid #ccc;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+
+        input[type=text]:focus {
+            border: 3px solid #555;
+        }
+    </style>
+  </head>
+  <body>
+
+<div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Widget Setting</h3>
+        </div>
+        <table> 
+            <form>
+                <tr>
+                    <td>
+                        <div>
+                         Name: <input type="text" ng-model="rootFolders" ng-init="rootFolders='new widget'">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="modal-body" id="modal-body" width="100px">
+                            Type <select>
+                                <option ng-repeat="item in $ctrl.items" ng-click="$event.preventDefault(); $ctrl.selected.item = item">
+                                    {{ item }}
+                                </option>
+                            </select>
+                           <!-- Selected: <b>{{ $ctrl.selected.item }}</b> -->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                         Width: <input type="text" ng-model="width" ng-init="width=1">
+                        </div>
+                    </td>
+                    <td>
+                         <div>
+                         Height: <input type="text" ng-model="height" ng-init="height=1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                         Row: <input type="text" ng-model="row" ng-init="row=2">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                         Column: <input type="text" ng-model="column" ng-init="column=0">
+                        </div>
+                    </td>
+                </tr>
+            </form>
+        </table>
+        <div class="modal-footer">
+             <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="stackedModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title-{{name}}">The {{name}} modal!</h3>
+        </div>
+        <div class="modal-body" id="modal-body-{{name}}">
+            Having multiple modals open at once is probably bad UX but it's technically possible.
+        </div>
+    </script>
+
+    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Widget Setting</button>
+    <div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
+    <div class="modal-parent">
+    </div>
+</div>
+  </body>
+</html>
